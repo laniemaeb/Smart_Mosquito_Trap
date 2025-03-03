@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block content %}
+    <h1>Captured Images</h1>
+    <div class="gallery" id="gallery"></div>
+    <div class="nav-buttons">
+        <button onclick="changeImage(-1, 'gallery')">&#9665; Previous</button>
+        <button onclick="changeImage(1, 'gallery')">Next &#9655;</button>
+    </div>
+    <script src="/static/scripts.js"></script>
+    <script>
+        loadImages('/captured_images', 'gallery');
+    </script>
+{% endblock %}

@@ -1,0 +1,23 @@
+libcamera-still -o test.jpg  --> testing the camera (picture)
+
+
+- inference is now working on RPi
+- 
+
+LIVE SHARE:
+https://prod.liveshare.vsengsaas.visualstudio.com/join?1A83ACFA79EC1B65FECFA04BF811F0592742
+
+//From RPi
+https://prod.liveshare.vsengsaas.visualstudio.com/join?D24209842F71053EF3FA1E28B98C45E922EC
+
+
+
+SELECT * FROM MosquitoData ORDER BY id DESC LIMIT 10;
+SELECT datetime, faa_count, temperature FROM MosquitoData ORDER BY datetime DESC;
+
+
+sqlite> SELECT datetime, temperature, faa_count  FROM MosquitoData ORDER BY datetime DESC;
+2025-02-23 AM|11.0|30
+
+https://filebin.net/rqtdaa8falsk2tas
+
