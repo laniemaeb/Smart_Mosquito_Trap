@@ -11,8 +11,10 @@ if len(sys.argv) != 3:
     sys.exit(1)
 
 # Get image paths from command-line arguments
-input_image_path = sys.argv[1]
-output_image_path = sys.argv[2]
+# input_image_path = sys.argv[1]
+# output_image_path = sys.argv[2]
+input_image_path = "captured_images/2025_03_16_AM.jpg"
+output_image_path = "images/2025_03_16_AM.jpg"
 
 # Define constants
 API_URL = "https://detect.roboflow.com"

@@ -137,7 +137,7 @@ def run_inference(image_path, filename):
 
         timestamp = f"{rtc.datetime.tm_year}-{rtc.datetime.tm_mon:02d}-{rtc.datetime.tm_mday:02d} {'AM' if rtc.datetime.tm_hour < 12 else 'PM'}"
         global average_temperature
-        info_text = f"{timestamp} | FAA Count: {faa_count} | Temp: {average_temperature:.1f} degC"
+        info_text = f"{timestamp} | FAA Count: {faa_count}"# Temp: {average_temperature:.1f} degC"
         cv2.putText(
             image,
             info_text,
@@ -173,12 +173,16 @@ def schedule_capture():
         """Schedules image capture at 7 AM and 8 PM daily, ensuring it runs only once per scheduled time."""
         global scheduled_capture_enable, scheduled_capture_hascaptured, initial_temperature, final_temperature, average_temperature
         now = rtc.datetime
-        print(f"⏰ Current Time: {now.tm_hour}:{now.tm_min}, Scheduled Capture Enabled: {scheduled_capture_enable}, Has Captured: {scheduled_capture_hascaptured}")  # Debugging
-        if (now.tm_hour == 7 and now.tm_min == 0) or (now.tm_hour == 20 and now.tm_min == 0):
+        print(
+            f"⏰ Current Time: {now.tm_hour}:{now.tm_min}, Scheduled Capture Enabled: {scheduled_capture_enable}, Has Captured: {scheduled_capture_hascaptured}"
+        )  # Debugging
+        if (now.tm_hour == 7 and now.tm_min == 0) or (
+            now.tm_hour == 20 and now.tm_min == 0
+        ):
             if scheduled_capture_enable and scheduled_capture_hascaptured == False:
                 GPIO.output(GPIO_PIN, GPIO.HIGH)  # turn ON flash
                 print("📸 Triggering scheduled capture...")
-                scheduled_capture_hascaptured = True  # Ensure it captures only once per scheduled time
+                scheduled_capture_hascaptured = True
                 capture_image()
         elif now.tm_min != 0:
             scheduled_capture_hascaptured = False
@@ -443,7 +447,7 @@ def RunTest_Capture():
 
         timestamp = f"{rtc.datetime.tm_year}-{rtc.datetime.tm_mon:02d}-{rtc.datetime.tm_mday:02d} {'AM' if rtc.datetime.tm_hour < 12 else 'PM'}"
         info_text = (
-            f"{timestamp} | FAA Count: {faa_count} | Temp: {rtc.temperature:.1f} degC"
+            f"{timestamp} | FAA Count: {faa_count} "#Temp: {rtc.temperature:.1f} degC"
         )
         cv2.putText(
             image,

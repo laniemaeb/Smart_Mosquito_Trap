@@ -6,10 +6,10 @@ import json
 import cv2
 
 
-API_KEY = "122aOY67jDoRdfvlcYg6"
-MODEL_ID = "mosquito_custom/2"
-IMAGE_PATH = "images/sample_0002.jpg"
-OUTPUT_IMAGE_PATH = "images/output.jpg"
+API_KEY = "M95xWXJrs2UyLY6suIlB"
+MODEL_ID = "mosquito_faa/1"
+IMAGE_PATH = "captured_images/2025_03_16_AM.jpg"
+OUTPUT_IMAGE_PATH = "images/output_2025_03_16_AM.jpg"
 
 
 # Run inference and visualize predictions
