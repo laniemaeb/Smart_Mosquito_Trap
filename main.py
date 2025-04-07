@@ -112,28 +112,29 @@ def run_inference(image_path, filename):
 
         image = cv2.imread(image_path)
         for pred in predictions:
-            x, y, width, height = (
-                int(pred["x"]),
-                int(pred["y"]),
-                int(pred["width"]),
-                int(pred["height"]),
-            )
-            cv2.rectangle(
-                image,
-                (x - width // 2, y - height // 2),
-                (x + width // 2, y + height // 2),
-                (255, 0, 0),
-                2,
-            )
-            cv2.putText(
-                image,
-                f"FAA: {pred['confidence']:.2f}",
-                (x - width // 2, y - height // 2 - 10),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.5,
-                (0, 255, 0),
-                2,
-            )
+            if pred['confidence']>=0.5:
+                x, y, width, height = (
+                    int(pred["x"]),
+                    int(pred["y"]),
+                    int(pred["width"]),
+                    int(pred["height"]),
+                )
+                cv2.rectangle(
+                    image,
+                    (x - width // 2, y - height // 2),
+                    (x + width // 2, y + height // 2),
+                    (255, 0, 0),
+                    2,
+                )
+                cv2.putText(
+                    image,
+                    f"FAA: {pred['confidence']:.2f}",
+                    (x - width // 2, y - height // 2 - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.5,
+                    (0, 255, 0),
+                    2,
+                )
 
         timestamp = f"{rtc.datetime.tm_year}-{rtc.datetime.tm_mon:02d}-{rtc.datetime.tm_mday:02d} {'AM' if rtc.datetime.tm_hour < 12 else 'PM'}"
         global average_temperature
